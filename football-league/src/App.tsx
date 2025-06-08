@@ -1,13 +1,15 @@
 import {fetchTeams} from './utils/teams'
 import LeagueNavbar from './components/LeagueNavbar'
+import TeamCard from './components/TeamCard'
 import './App.css'
 import { useEffect, useState } from 'react';
+import { Container,Grid } from '@mui/material';
 
 function App() {
   type Team = {name:string, logo:string};
-  type LeagueType = "Premier League" | "La Liga" | "Serie A" | "Bundesliga" | "Ligue 1"
+  type LeagueType = "Premier League" | "La Liga" | "Serie A" | "Bundesliga" | "Ligue 1" 
   const [teams,setTeams] = useState<Team[]>([]);
-  const [league,setLeague] = useState<LeagueType>("Premier League");
+  const [league,setLeague] = useState<LeagueType>("Bundesliga");
   const leaguesList: Record<LeagueType,number> = {
     "Premier League": 4328,
     "La Liga": 4335,
@@ -39,13 +41,16 @@ function App() {
      <LeagueNavbar 
     leagues={Object.keys(leaguesList) as LeagueType[]}
     onLeagueSelect={setLeague}/>
-    <ul>
-      {teams.map(team => (
-        <li key={team.name}>
-          {team.name}
-        </li>
+    <Container>
+      <Grid container spacing={2} sx={{mt: 2}}>
+        {teams.map(t => (
+        <Grid>
+          <TeamCard team={t as Team}/> 
+        </Grid>
       ))}
-    </ul>
+      </Grid>
+    </Container>
+      
     </>
    
   );
