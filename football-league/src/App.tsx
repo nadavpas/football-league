@@ -1,8 +1,11 @@
 import {fetchTeams} from './utils/teams'
 import './App.css'
+import { useState } from 'react';
 
 function App() {
-  const leagues = {
+  const [teams,setTeams] = useState([]);
+  const [league,setLeague] = useState("Premier League");
+  const leaguesList = {
     "Premier League": 4328,
     "La Liga": 4335,
     "Serie A": 4332,
@@ -10,10 +13,13 @@ function App() {
     "Ligue 1": 4334
   };
 
-  
 
   return (
-    <h1>HELLO</h1>
+    <ul>
+      {Object.keys(leaguesList).map(league => (
+        <li>{league}</li>
+      ))}
+    </ul>
   )
 }
 
