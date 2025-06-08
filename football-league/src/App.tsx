@@ -4,8 +4,9 @@ import './App.css'
 import { useEffect, useState } from 'react';
 
 function App() {
+  type Team = {name:string, logo:string};
   type LeagueType = "Premier League" | "La Liga" | "Serie A" | "Bundesliga" | "Ligue 1"
-  const [teams,setTeams] = useState([]);
+  const [teams,setTeams] = useState<Team[]>([]);
   const [league,setLeague] = useState<LeagueType>("Premier League");
   const leaguesList: Record<LeagueType,number> = {
     "Premier League": 4328,
@@ -30,14 +31,23 @@ function App() {
       }
     };
     loadTeams();
-    console.log(teams);
     },[league])
 
 
   return (
-    <LeagueNavbar 
+    <>
+     <LeagueNavbar 
     leagues={Object.keys(leaguesList) as LeagueType[]}
     onLeagueSelect={setLeague}/>
+    <ul>
+      {teams.map(team => (
+        <li key={team.name}>
+          {team.name}
+        </li>
+      ))}
+    </ul>
+    </>
+   
   );
 };
 
