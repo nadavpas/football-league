@@ -1,4 +1,5 @@
 import {fetchTeams} from './utils/teams'
+import LeagueNavbar from './components/LeagueNavbar'
 import './App.css'
 import { useEffect, useState } from 'react';
 
@@ -29,19 +30,15 @@ function App() {
       }
     };
     loadTeams();
-  },[league])
+    console.log(teams);
+    },[league])
 
 
   return (
-    <ul>
-      {Object.keys(leaguesList).map(l => (
-        <li key={l} onClick={()=> {
-          setLeague(l as LeagueType);
-          console.log(teams)
-        }}>{l}</li>
-      ))}
-    </ul>
-  )
-}
+    <LeagueNavbar 
+    leagues={Object.keys(leaguesList) as LeagueType[]}
+    onLeagueSelect={setLeague}/>
+  );
+};
 
 export default App
