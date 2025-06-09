@@ -1,10 +1,10 @@
-import React from "react";
+
 import { Card,CardContent, Typography, Avatar, Box } from "@mui/material";
 type Team = {name:string, logo:string};
-interface TeamsCardProp {
+interface TeamCardProp {
     team: Team
 };
-const TeamCard: React.FC<TeamsCardProp> = ({team}) => {
+function TeamCard({team} : TeamCardProp){
     return (
         <Card>
             <CardContent>

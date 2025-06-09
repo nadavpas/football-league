@@ -1,10 +1,10 @@
-import React from "react"
+
 type LeagueType = "Premier League" | "La Liga" | "Serie A" | "Bundesliga" | "Ligue 1"
 interface LeagueNavbarProps { 
     leagues: LeagueType[],
     onLeagueSelect: (league: LeagueType) => void
 };
-const LeagueNavbar: React.FC<LeagueNavbarProps> = ({leagues,onLeagueSelect}) => {
+function LeagueNavbar({leagues,onLeagueSelect} : LeagueNavbarProps){
     return (
         <nav style={{position: 'fixed',
             top: 0,
