@@ -4,18 +4,11 @@ import TeamCard from "./components/TeamCard";
 import "./App.css";
 import { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
-
+import type { TeamType,LeagueType } from "./Types";
 function App() {
-  // create types
-  type Team = { name: string; logo: string };
-  type LeagueType =
-    | "Premier League"
-    | "La Liga"
-    | "Serie A"
-    | "Bundesliga"
-    | "Ligue 1";
+  
   // states declerations
-  const [teams, setTeams] = useState<Team[]>([]);
+  const [teams, setTeams] = useState<TeamType[]>([]);
   const [league, setLeague] = useState<LeagueType>("Bundesliga");
   // init a dict containing name -> id
   const leaguesList: Record<LeagueType, number> = {
@@ -52,7 +45,7 @@ function App() {
       <Grid container spacing={2} sx={{ paddingTop: 3 }}>
         {teams.map((t) => (
           <Grid size={6} sx={{ padding: 2 }}>
-            <TeamCard team={t as Team} />
+            <TeamCard team={t as TeamType} />
           </Grid>
         ))}
       </Grid>

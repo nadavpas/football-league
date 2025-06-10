@@ -1,5 +1,4 @@
-
-type LeagueType = "Premier League" | "La Liga" | "Serie A" | "Bundesliga" | "Ligue 1"
+import type { LeagueType } from "../Types";
 interface LeagueNavbarProps { 
     leagues: LeagueType[],
     onLeagueSelect: (league: LeagueType) => void
