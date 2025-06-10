@@ -22,8 +22,8 @@ function App() {
     "Premier League": 4328,
     "La Liga": 4335,
     "Serie A": 4332,
-    Bundesliga: 4331,
     "Ligue 1": 4334,
+    Bundesliga: 4331,
   };
   // useEffect thet will trigger the get request on each league selection
   useEffect(() => {
@@ -50,11 +50,11 @@ function App() {
         onLeagueSelect={setLeague}
       />
       <Grid container spacing={2} sx={{ paddingTop: 3 }}>
-        <Grid sx={{ padding: 2 }}>
-          {teams.map((t) => (
+        {teams.map((t) => (
+          <Grid size={6} sx={{ padding: 2 }}>
             <TeamCard team={t as Team} />
-          ))}
-        </Grid>
+          </Grid>
+        ))}
       </Grid>
     </>
   );
