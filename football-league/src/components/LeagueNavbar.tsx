@@ -1,20 +1,12 @@
 import type { LeagueType } from "../Types";
+import '../styles/LeagueNavbar.css'
 interface LeagueNavbarProps { 
     leagues: LeagueType[],
     onLeagueSelect: (league: LeagueType) => void
 };
 function LeagueNavbar({leagues,onLeagueSelect} : LeagueNavbarProps){
     return (
-        <nav style={{position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            zIndex: 1000,
-            backgroundColor: '#f8f8f8',
-            padding: '10px',
-            borderBottom: '1px solid #ccc',
-            display: 'flex',
-            justifyContent: 'flex-start'}}>
+        <nav>
             {leagues.map(league => (
                 <button key={league} onClick={() => onLeagueSelect(league) }> 
                     {league}
